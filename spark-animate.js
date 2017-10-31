@@ -30,8 +30,8 @@ browserChecks.isChrome=!!window.chrome && !!window.chrome.webstore;
 browserChecks.isBlink= (browserChecks.isChrome || browserChecks.isOpera) && !!window.CSS;  
 
 // VARIABLES
-var skanimate= {}; // initialize the palletetowm object.
-skanimate.directions = ['up', 'down', 'left', 'right'];
+var animate= {}; // initialize the palletetowm object.
+animate.directions = ['up', 'down', 'left', 'right'];
 
 
 // FUNCTIONS
@@ -48,11 +48,11 @@ skanimate.directions = ['up', 'down', 'left', 'right'];
  * @param {number} index - optional: If a non unique identifier is passed use this as the index to use. Defualts to 0. 
  * @return {void}
  */
-skanimate.move = function (identifier, direction, callback, step, distance, index) {
+animate.move = function (identifier, direction, callback, step, distance, index) {
     var el = (identifier instanceof HTMLElement)? identifier : palletetown.getElementByIdentifier(identifier, index);
     if (!el) return;
 
-    if (skanimate.directions.indexOf(direction) < 0) {
+    if (animate.directions.indexOf(direction) < 0) {
         console.error('spark animate: unrecognized direction %s', direction);
         return;
     }
@@ -74,7 +74,7 @@ skanimate.move = function (identifier, direction, callback, step, distance, inde
         if (direction === 'right') dist += el.parentElement.offsetWidth;
     }
 
-    var pos = ['up', 'down'].indexOf(direction) >= 0 ? pskanimategetElementPos(el, 'top') : skanimate.getElementPos(el, 'left');
+    var pos = ['up', 'down'].indexOf(direction) >= 0 ? panimategetElementPos(el, 'top') : animate.getElementPos(el, 'left');
     var id = setInterval(frame, 1);
     function frame() {
         if (dist == 0) {
@@ -90,7 +90,7 @@ skanimate.move = function (identifier, direction, callback, step, distance, inde
     }
 }
 
-skanimate.getElementPos = function (el, edge) {
+animate.getElementPos = function (el, edge) {
     if (edge === 'top') return p = el.style.top? parseInt(el.style.top.substring(0, el.style.top.length - 2)) : 0;
     if (edge === 'left') return el.style.left? parseInt(el.style.left.substring(0, el.style.left.length - 2)) : 0;
 }
@@ -100,7 +100,7 @@ skanimate.getElementPos = function (el, edge) {
  * @param {string} identifier - html id, class name, tag name, or name.
  * @return {HTMLElement}
  */
-skanimate.getElementByIdentifier = function (identifier, index) {
+animate.getElementByIdentifier = function (identifier, index) {
 
     var e = document.getElementById(identifier);
     if (!e) e = document.getElementsByClassName(identifier)[(index || 0)];
@@ -117,11 +117,11 @@ skanimate.getElementByIdentifier = function (identifier, index) {
  * @param {boolean} mobileDisable - if true will not call function is screen size is of mobile width
  */
 
-skanimate.scrollcontrol = function(threshold, identifier, classname, mobileDisable){
+animate.scrollcontrol = function(threshold, identifier, classname, mobileDisable){
     // Check if mobile width
     if(mobileDisable && window.innerWidth <= 640) return;
         
-    var el = skanimate.getElementByIdentifier(identifier, 0);
+    var el = animate.getElementByIdentifier(identifier, 0);
     var scrollHeight = (browserChecks.isIE ? window.pageYOffset : window.scrollY);
         
     if (!el) return;
