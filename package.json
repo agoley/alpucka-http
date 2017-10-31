@@ -1,6 +1,6 @@
 {
-  "name": "spark-animate",
-  "version": "1.0.1",
+  "name": "pallete-animate",
+  "version": "1.0.0",
   "description": "A lightweight JavaScript library for animations. Compatible with most browsers.",
   "main": "spark-animate.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agoley/spark-animate.git"
+    "url": "git+https://github.com/agoley/pallet-animate.git"
   },
   "keywords": [
     "animate",
@@ -19,7 +19,7 @@
   "author": "ajgoley",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/agoley/spark-animate/issues"
+    "url": "https://github.com/agoley/pallet-animate/issues"
   },
-  "homepage": "https://github.com/agoley/spark-animate#readme"
+  "homepage": "https://github.com/agoley/pallet-animate#readme"
 }
