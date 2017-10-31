@@ -1,0 +1,25 @@
+{
+  "name": "spark-animate",
+  "version": "1.0.1",
+  "description": "A lightweight JavaScript library for animations. Compatible with most browsers.",
+  "main": "spark-animate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agoley/spark-animate.git"
+  },
+  "keywords": [
+    "animate",
+    "javascript",
+    "light",
+    "spark"
+  ],
+  "author": "ajgoley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agoley/spark-animate/issues"
+  },
+  "homepage": "https://github.com/agoley/spark-animate#readme"
+}
