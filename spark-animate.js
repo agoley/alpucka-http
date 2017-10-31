@@ -1,6 +1,6 @@
 /**
- * SPARK ANIMATE JS
- * Spark Animate s a simple and light weight JavaScript library for animations. Compatible with most browsers.
+ * SPARK skanimate JS
+ * Spark skanimate s a simple and light weight JavaScript library for animations. Compatible with most browsers.
  */
 
 // Check Browser Version
@@ -30,8 +30,8 @@ browserChecks.isChrome=!!window.chrome && !!window.chrome.webstore;
 browserChecks.isBlink= (browserChecks.isChrome || browserChecks.isOpera) && !!window.CSS;  
 
 // VARIABLES
-var animate= {}; // initialize the palletetowm object.
-animate.directions = ['up', 'down', 'left', 'right'];
+var skanimate = {}; // initialize the skanimate object.
+skanimate.directions = ['up', 'down', 'left', 'right'];
 
 
 // FUNCTIONS
@@ -48,12 +48,12 @@ animate.directions = ['up', 'down', 'left', 'right'];
  * @param {number} index - optional: If a non unique identifier is passed use this as the index to use. Defualts to 0. 
  * @return {void}
  */
-animate.move = function (identifier, direction, callback, step, distance, index) {
-    var el = (identifier instanceof HTMLElement)? identifier : palletetown.getElementByIdentifier(identifier, index);
+skanimate.move = function (identifier, direction, callback, step, distance, index) {    
+    var el = (identifier instanceof HTMLElement)? identifier : skanimate.getElementByIdentifier(identifier, index);
     if (!el) return;
 
-    if (animate.directions.indexOf(direction) < 0) {
-        console.error('spark animate: unrecognized direction %s', direction);
+    if (skanimate.directions.indexOf(direction) < 0) {
+        console.error('spark skanimate: unrecognized direction %s', direction);
         return;
     }
 
@@ -62,7 +62,7 @@ animate.move = function (identifier, direction, callback, step, distance, index)
     var dist;
     if (distance) {
         if ((typeof distance) != 'number') {
-            console.error('skark animate: distance must be of type number');
+            console.error('skark skanimate: distance must be of type number');
         }
         dist = distance;
     } else {
@@ -74,7 +74,7 @@ animate.move = function (identifier, direction, callback, step, distance, index)
         if (direction === 'right') dist += el.parentElement.offsetWidth;
     }
 
-    var pos = ['up', 'down'].indexOf(direction) >= 0 ? panimategetElementPos(el, 'top') : animate.getElementPos(el, 'left');
+    var pos = ['up', 'down'].indexOf(direction) >= 0 ? skanimate.getElementPos(el, 'top') : skanimate.getElementPos(el, 'left');
     var id = setInterval(frame, 1);
     function frame() {
         if (dist == 0) {
@@ -90,7 +90,7 @@ animate.move = function (identifier, direction, callback, step, distance, index)
     }
 }
 
-animate.getElementPos = function (el, edge) {
+skanimate.getElementPos = function (el, edge) {
     if (edge === 'top') return p = el.style.top? parseInt(el.style.top.substring(0, el.style.top.length - 2)) : 0;
     if (edge === 'left') return el.style.left? parseInt(el.style.left.substring(0, el.style.left.length - 2)) : 0;
 }
@@ -100,28 +100,27 @@ animate.getElementPos = function (el, edge) {
  * @param {string} identifier - html id, class name, tag name, or name.
  * @return {HTMLElement}
  */
-animate.getElementByIdentifier = function (identifier, index) {
-
+skanimate.getElementByIdentifier = function (identifier, index) {
     var e = document.getElementById(identifier);
     if (!e) e = document.getElementsByClassName(identifier)[(index || 0)];
     if (!e) e = document.getElementsByTagName(identifier)[(index || 0)];
-    if (!e) console.error('skark animate: could not find an element with identifier %s and index %d', identifier, index);
+    if (!e) console.error('skark skanimate: could not find an element with identifier %s and index %d', identifier, index);
     return e;
 }
 
 /**
- * Add/Remove Class based on location of Header
+ * Add/Remove Class based on location of element.
  * @param {number} threshold - threshold number of change vertical value
  * @param {string} identifier
  * @param {string} classname
  * @param {boolean} mobileDisable - if true will not call function is screen size is of mobile width
  */
 
-animate.scrollcontrol = function(threshold, identifier, classname, mobileDisable){
+skanimate.skScroll = function(threshold, identifier, classname, mobileDisable){
     // Check if mobile width
     if(mobileDisable && window.innerWidth <= 640) return;
         
-    var el = animate.getElementByIdentifier(identifier, 0);
+    var el = skanimate.getElementByIdentifier(identifier, 0);
     var scrollHeight = (browserChecks.isIE ? window.pageYOffset : window.scrollY);
         
     if (!el) return;
