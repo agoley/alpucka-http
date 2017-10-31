@@ -1,0 +1,24 @@
+{
+  "name": "pallet-http",
+  "version": "1.0.0",
+  "description": "Pallet Http is a JavaScript library for working with http methods. Compatible with most browsers.",
+  "main": "spark-http.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agoley/pallet-http.git"
+  },
+  "keywords": [
+    "http",
+    "pallet",
+    "XMLHTTPRequest"
+  ],
+  "author": "ajgoley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agoley/pallet-http/issues"
+  },
+  "homepage": "https://github.com/agoley/pallet-http#readme"
+}
