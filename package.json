@@ -1,47 +1,24 @@
 {
-<<<<<<< HEAD
   "name": "pallet-http",
   "version": "1.0.0",
   "description": "Pallet Http is a JavaScript library for working with http methods. Compatible with most browsers.",
   "main": "spark-http.js",
-=======
-  "name": "pallete-animate",
-  "version": "1.0.0",
-  "description": "A lightweight JavaScript library for animations. Compatible with most browsers.",
-  "main": "spark-animate.js",
->>>>>>> 173929d39775aa71773ff62b695c8e3462330f0d
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-<<<<<<< HEAD
     "url": "git+https://github.com/agoley/pallet-http.git"
   },
   "keywords": [
     "http",
     "pallet",
     "XMLHTTPRequest"
-=======
-    "url": "git+https://github.com/agoley/pallet-animate.git"
-  },
-  "keywords": [
-    "animate",
-    "javascript",
-    "light",
-    "spark"
->>>>>>> 173929d39775aa71773ff62b695c8e3462330f0d
   ],
   "author": "ajgoley",
   "license": "MIT",
   "bugs": {
-<<<<<<< HEAD
     "url": "https://github.com/agoley/pallet-http/issues"
   },
   "homepage": "https://github.com/agoley/pallet-http#readme"
-=======
-    "url": "https://github.com/agoley/pallet-animate/issues"
-  },
-  "homepage": "https://github.com/agoley/pallet-animate#readme"
->>>>>>> 173929d39775aa71773ff62b695c8e3462330f0d
 }
