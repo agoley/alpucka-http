@@ -1,11 +1,38 @@
 /**
- * PALLET HTTP JS
- * Pallet HTTP is a JavaScript Library for http calls. Compatible with most browsers.
+ * ALPUCKA-HTTP JS
+ * alpucka-http is a JavaScript Library for http calls. Compatible with most browsers.
  * 
  */
 
+// Browser Check
+var browserChecks = {
+    // Opera 8.0+
+    isOpera: false,
+    // Firefox 1.0+
+    isFirefox: false,
+    // Safari 3.0+ "[object HTMLElementConstructor]" 
+    isSafari: false,
+    // Internet Explorer 6-11
+    isIE: false,
+    // Edge 20+
+    isEdge: false,
+    // Chrome 1+
+    isChrome: false,
+    // Blink engine detection
+    isBlink: false
+};
+
+browserChecks.isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+browserChecks.isFirefox = typeof InstallTrigger !== 'undefined';
+browserChecks.isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+browserChecks.isIE =/*@cc_on!@*/false || !!document.documentMode;
+browserChecks.isEdge = !browserChecks.isIE && !!window.StyleMedia;
+browserChecks.isChrome = !!window.chrome && !!window.chrome.webstore;
+browserChecks.isBlink = (browserChecks.isChrome || browserChecks.isOpera) && !!window.CSS;
+
+
 // VARIABLES
-var http = {}; // initialize the http object.
+var http = {}; // initialize the http  object.
 
 // FUNCTIONS
 /**
@@ -22,9 +49,13 @@ http.get = function (url, next, headers, async) {
             next(this.responseText);
         }
     };
+    // IE prevent caching results by URI
+    if (browserChecks.isIE) {
+        url = url + "?random=" + Math.random();
+    }
 
-    var isAsync = (typeof async === 'undefined') ? false : async;    
-    xhttp.open("GET", url, isAsync);    
+    var isAsync = (typeof async === 'undefined') ? false : async;
+    xhttp.open("GET", url, isAsync);
     if (headers) {
         for (var key in headers) {
             if (headers.hasOwnProperty(key)) {
@@ -51,60 +82,60 @@ http.post = function (url, body, next, headers, async) {
         }
     };
 
-    var isAsync = (typeof async === 'undefined') ? false : async;    
-    xhttp.open("POST", url, isAsync);  
+    var isAsync = (typeof async === 'undefined') ? false : async;
+    xhttp.open("POST", url, isAsync);
     if (headers) {
         for (var key in headers) {
             if (headers.hasOwnProperty(key)) {
                 xhttp.setRequestHeader(key, headers[key]);
             }
         }
-    }  
+    }
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(body));
 }
 
-http.put = function(url, body, next, headers, async) {
-    var xhttp = http.getHTTPObject(); 
+http.put = function (url, body, next, headers, async) {
+    var xhttp = http.getHTTPObject();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             next(this.responseText);
         }
     };
-       
-    var isAsync = (typeof async === 'undefined') ? false : async;        
-    xhttp.open('PUT', url, true);  
+
+    var isAsync = (typeof async === 'undefined') ? false : async;
+    xhttp.open('PUT', url, true);
     if (headers) {
         for (var key in headers) {
             if (headers.hasOwnProperty(key)) {
                 xhttp.setRequestHeader(key, headers[key]);
             }
         }
-    }  
-    xhttp.setRequestHeader("Content-type", "application/json");    
+    }
+    xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(body));
 }
 
 /**
  * Send a DELETE Request.
  */
-http.delete = function(url, next, headers, async) {
-    var xhttp = http.getHTTPObject(); 
+http.delete = function (url, next, headers, async) {
+    var xhttp = http.getHTTPObject();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             next(this.responseText);
         }
     };
-       
-    var isAsync = (typeof async === 'undefined') ? false : async;        
-    xhttp.open('DELETE', url, true);  
+
+    var isAsync = (typeof async === 'undefined') ? false : async;
+    xhttp.open('DELETE', url, true);
     if (headers) {
         for (var key in headers) {
             if (headers.hasOwnProperty(key)) {
                 xhttp.setRequestHeader(key, headers[key]);
             }
         }
-    }  
+    }
     xhttp.send();
 }
 
